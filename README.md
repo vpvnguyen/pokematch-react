@@ -67,3 +67,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 # pokematch-react
+
+# todo
+## navbar
+- title, message, current score | 
+## cards
+- 12 cards
+- on click, randomize
+- if item mismatches, score ++
