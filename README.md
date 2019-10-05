@@ -1,3 +1,13 @@
+# pokematch-react
+
+# todo
+## navbar
+- title, current score | high score, message
+## cards
+- 12 cards
+- on click, randomize
+- if item mismatches, score ++
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,12 +76,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# pokematch-react
 
-# todo
-## navbar
-- title, message, current score | 
-## cards
-- 12 cards
-- on click, randomize
-- if item mismatches, score ++
