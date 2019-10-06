@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-
+import Image from 'react-bootstrap/Image';
 
 class Card extends Component {
 
     render() {
         return (
             <div>
-                <p>Cards</p>
-                <ul>
-                    <li>Get data from json</li>
-                    <li>Randomize</li>
-                    <li>Display to front</li>
-                    <li>onclick: check if match</li>
-                    <li>affect score</li>
-                </ul>
-
-            </div >
+                <Image
+                    src={this.props.image}
+                    id={this.props.id}
+                    key={this.props.id}
+                    onClick={() => this.props.checkScore(this.props.id)}
+                    alt={this.props.name}
+                />
+            </div>
         );
     }
 }
