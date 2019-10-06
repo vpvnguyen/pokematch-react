@@ -1,4 +1,4 @@
-# PokeMatch! (React.js)
+# PokéMatch! (React.js)
 Demo: https://calm-falls-51776.herokuapp.com/
 
 A memory Pokemon themed game. Click on any card but do not click on the same one twice! Built on React.js. This challenge was to teach me the concept of components, state, and props while exploring react UI libraries.
