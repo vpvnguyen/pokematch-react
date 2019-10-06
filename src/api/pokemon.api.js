@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// Export an object containing methods we'll use for accessing the pokemon API
-
+// export an object for accessing the pokemon API
 const getPokemon = {
 
     pokemonApiRoute: 'https://api.pokemontcg.io/v1/cards',
@@ -18,7 +17,7 @@ const getPokemon = {
     },
 
     shuffle: function (array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
+        let currentIndex = array.length, temporaryValue, randomIndex;
 
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
