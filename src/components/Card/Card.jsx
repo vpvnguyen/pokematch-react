@@ -1,21 +1,23 @@
-import React from 'react'
-import Image from 'react-bootstrap/Image';
-
-export default function Card() {
-    return (
-        <div>
-
-            <p>Cards</p>
-            <ul>
-                <li>Get data from json</li>
-                <li>Randomize</li>
-                <li>Display to front</li>
-                <li>onclick: check if match</li>
-                <li>affect score</li>
-            </ul>
+import React, { Component } from 'react';
 
 
-            <Image src="https://images.pokemontcg.io/dp6/90_hires.png" fluid />
-        </div>
-    )
+class Card extends Component {
+
+    render() {
+        return (
+            <div>
+                <p>Cards</p>
+                <ul>
+                    <li>Get data from json</li>
+                    <li>Randomize</li>
+                    <li>Display to front</li>
+                    <li>onclick: check if match</li>
+                    <li>affect score</li>
+                </ul>
+
+            </div >
+        );
+    }
 }
+
+export default Card;
