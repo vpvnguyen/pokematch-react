@@ -5,65 +5,60 @@ import pokemonApi from '../../api/pokemon.api.js';
 // componentDidMount() breaks if export default function
 class Game extends Component {
     state = {
-        search: "",
-        breeds: [],
-        results: [],
-        error: ""
+        allCards: [],
+        clicked: [],
+        score: 1
     };
 
-    // When the component mounts, load the next dog to be displayed
+    // When the component mounts, load cards to be displayed
     componentDidMount() {
-        this.loadCards()
+        this.loadCards();
     }
 
     loadCards = () => {
-        console.log('hi');
+        console.log('loading cards...');
         pokemonApi.getBasicCards()
             .then(res => {
-                console.log('setting state')
-                console.log(res)
+                console.log('setting state...');
+                console.log(res);
                 this.setState({
-                    images: res.imageUrl
+                    allCards: res
                 });
             })
-            .catch(err => console.log(`Error pokemonApi.getBasicCards(): ${err}`))
+            .catch(err => console.log(`Error pokemonApi.getBasicCards(): ${err}`));
     };
 
-    handleInputChange = event => {
-        //   this.setState({ search: event.target.value });
-    };
+    // pass into Card to check score onclick
+    checkScore = cardID => {
+        console.log(`Card ID: ${cardID}`);
 
-    handleFormSubmit = event => {
-        //   event.preventDefault();
-        //   API.getDogsOfBreed(this.state.search)
-        //     .then(res => {
-        //       if (res.data.status === "error") {
-        //         throw new Error(res.data.message);
-        //       }
-        //       this.setState({ results: res.data.message, error: "" });
-        //     })
-        //     .catch(err => this.setState({ error: err.message }));
-    };
+        // check if user has clicked this card
+        if (this.state.clicked.includes(cardID)) {
+            console.log(`Already Clicked: ${cardID}`);
+        } else {
+            this.state.clicked.push(cardID);
+            this.setState({ score: this.state.score + 1 });
+        }
+        this.loadCards();
+        console.log(this.state.clicked);
+        console.log(this.state.score);
+
+    }
 
     render() {
         return (
             <div>
-                {/* <Container style={{ minHeight: "80%" }}>
-            <h1 className="text-center">Search By Breed!</h1>
-            <Alert
-              type="danger"
-              style={{ opacity: this.state.error ? 1 : 0, marginBottom: 10 }}
-            >
-              {this.state.error}
-            </Alert>
-            <SearchForm
-              handleFormSubmit={this.handleFormSubmit}
-              handleInputChange={this.handleInputChange}
-              breeds={this.state.breeds}
-            />
-            <SearchResults results={this.state.results} />
-          </Container> */}
-                <Card />
+                {/* render out all pokemon cards as images */}
+                {this.state.allCards.map(card => (
+                    <Card
+                        image={card.imageUrl}
+                        key={card.id}
+                        id={card.id}
+                        checkScore={this.checkScore}
+                    />
+                ))}
+
+
             </div>
         );
     }
