@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import Navbar from 'react-bootstrap/Navbar';
+
+// components
 import Score from '../Score/Score.jsx';
 import ProgressBar from '../ProgressBar/ProgressBar.jsx';
+
+// styling
+import Navbar from 'react-bootstrap/Navbar';
+import { Animated } from 'react-animated-css';
 
 class Header extends Component {
 
@@ -9,17 +14,24 @@ class Header extends Component {
         return (
             <>
                 <Navbar className="fixed-top" bg="dark" variant="dark">
-                    <div className="container">
-                        <Navbar.Brand href="#home">PokéMatch</Navbar.Brand>
+
+                    <Animated className="container" animationIn="bounceInLeft" animationOut="flash"
+                        isVisible={this.props.animateToggle}>
+
+                        <Navbar.Brand href="https://github.com/vpvnguyen/pokematch-react" target="_blank">{this.props.isLoading ? 'Loading Pokemon API' : 'PokéMatch'}</Navbar.Brand>
+
                         <Score score={this.props.score} />
-                    </div>
+
+                    </Animated>
+
                 </Navbar >
+
                 <div className="fixed-top container mt-5">
                     <ProgressBar isLoading={this.props.isLoading} />
                 </div>
             </>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Header;

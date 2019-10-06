@@ -10,8 +10,8 @@ class Score extends Component {
                     Score: {this.props.score}
                 </span>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default Score;

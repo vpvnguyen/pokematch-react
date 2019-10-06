@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
-// react-scroll - ES6 Imports
-import { animateScroll as scroll } from 'react-scroll';
-
 // components
 import Header from '../Header/Header.jsx';
 import Message from '../Message/Message.jsx';
 import Card from '../Card/Card.jsx';
+
+// styling
+import { animateScroll as scroll } from 'react-scroll';
+import { Animated } from 'react-animated-css';
 
 // apis
 import pokemonApi from '../../api/pokemon.api.js';
@@ -19,7 +20,10 @@ class Game extends Component {
         allCards: [],
         clicked: [],
         isLoading: true,
-        message: 'Click on any card! Don\'t click on the same card twice!'
+        navMessage: 'Loading Pokemon API...',
+        message: 'Click on any card! Don\'t click on the same card twice!',
+        animateIsCorrect: 'fadeOutUp',
+        animateToggle: true
     };
 
     // When the component mounts, load cards to be displayed
@@ -29,14 +33,18 @@ class Game extends Component {
 
     // get card data from pokemon api
     loadCards = () => {
-        this.setState({ isLoading: true })
-        console.log('loading cards...');
+
+        this.setState({
+            isLoading: true
+        });
+
         pokemonApi.getBasicCards()
             .then(cardsData => {
-                console.log(`setting state...
-                ${cardsData}`);
                 this.setState({
-                    allCards: cardsData, isLoading: false
+                    allCards: cardsData,
+                    isLoading: false,
+                    animateIsCorrect: 'fadeOutUp',
+                    animateToggle: true
                 });
             })
             .catch(err => console.log(`Error pokemonApi.getBasicCards(): ${err}`));
@@ -44,16 +52,24 @@ class Game extends Component {
 
     // check score based on card ID
     checkScore = cardID => {
-        this.loadCards();
 
         // check if user has clicked this card
         if (this.state.clicked.includes(cardID)) {
-            console.log(`Already Clicked: ${cardID}`);
-            this.setState({ clicked: [], message: 'You already clicked that! Start over!' });
+            this.setState({
+                clicked: [],
+                message: 'You already clicked that! Start over!',
+                animateIsCorrect: 'wobble',
+                animateToggle: false
+            });
         } else {
             this.state.clicked.push(cardID);
-            this.setState({ score: this.state.clicked.length, message: 'Naisu!' });
+            this.setState({
+                score: this.state.clicked.length,
+                message: 'Naisu! Keep going!',
+                animateToggle: false
+            });
         }
+        this.loadCards();
     };
 
     // smooth scroll to the top
@@ -64,20 +80,32 @@ class Game extends Component {
     render() {
         return (
             <>
-                <Header score={this.state.clicked.length} isLoading={this.state.isLoading} />
+                <Header
+                    score={this.state.clicked.length}
+                    isLoading={this.state.isLoading}
+                    animateToggle={this.state.animateToggle}
+                />
 
-                {/* render out all pokemon cards as images */}
+                {/* render out all pokemon cards as images to DOM */}
                 <div className="container">
 
                     <div className="row">
-                        <Message message={this.state.message} />
+                        <Message
+                            message={this.state.message}
+                            animateIsCorrect={this.state.animateIsCorrect}
+                            animateToggle={this.state.animateToggle}
+                        />
                     </div>
 
+                    {/* map through array of objects and create card */}
                     <div className="row">
                         {
                             this.state.allCards.map(card => (
 
-                                <div className="col s3 mb-5" key={card.id}>
+                                // if wrapped in a container, will lose cascading card style
+                                <Animated className="col s3 mb-5" key={card.id} animationIn="bounceInDown"
+                                    animationOut={this.state.animateIsCorrect}
+                                    isVisible={this.state.animateToggle}>
                                     <Card
                                         image={card.imageUrlHiRes}
                                         key={card.id}
@@ -85,7 +113,7 @@ class Game extends Component {
                                         checkScore={this.checkScore}
                                         scrollTop={this.scrollToTop}
                                     />
-                                </div>
+                                </Animated>
 
                             ))
                         }
@@ -94,7 +122,7 @@ class Game extends Component {
                 </div>
             </>
         );
-    }
-}
+    };
+};
 
 export default Game;

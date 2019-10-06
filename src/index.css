@@ -1,7 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Mansalva&display=swap");
-
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
 html, body {
-  font-family: 'Mansalva', cursive;
+  font-family: 'Work Sans', sans-serif;
 
   width: 100%;
 }

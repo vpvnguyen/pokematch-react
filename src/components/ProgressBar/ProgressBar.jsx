@@ -10,16 +10,13 @@ class ProgressBar extends Component {
             return null;
         } else {
             return (
-                <div>
-                    <div className="row">
-                        <div id="progress" className="progress">
-                            <div className="indeterminate"></div>
-                        </div>
+                <div className="row">
+                    <div id="progress" className="progress">
+                        <div className="indeterminate"></div>
                     </div>
                 </div>
-            )
-        };
-
+            );
+        }
     };
 };
 
