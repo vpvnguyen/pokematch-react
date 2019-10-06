@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // styling
 import 'bootstrap/dist/css/bootstrap.min.css';
