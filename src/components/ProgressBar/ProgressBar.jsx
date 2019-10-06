@@ -3,9 +3,9 @@ import './ProgressBar.css';
 
 class ProgressBar extends Component {
 
-
     render() {
-        console.log(this.props.isLoading)
+
+        // show loading bar depending on state
         if (!this.props.isLoading) {
             return null;
         } else {
@@ -18,9 +18,9 @@ class ProgressBar extends Component {
                     </div>
                 </div>
             )
-        }
+        };
 
-    }
-}
+    };
+};
 
 export default ProgressBar;

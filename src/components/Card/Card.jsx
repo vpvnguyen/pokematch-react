@@ -8,8 +8,7 @@ class Card extends Component {
 
     render() {
         return (
-            <div>
-
+            <>
                 <Image
                     className="card"
                     src={this.props.image}
@@ -21,7 +20,7 @@ class Card extends Component {
                     }}
                     alt={this.props.name}
                 />
-            </div>
+            </>
         );
     }
 }

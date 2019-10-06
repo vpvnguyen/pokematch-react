@@ -14,6 +14,7 @@ import pokemonApi from '../../api/pokemon.api.js';
 // componentDidMount() breaks if export default function
 class Game extends Component {
 
+    // default state
     state = {
         allCards: [],
         clicked: [],
@@ -26,21 +27,22 @@ class Game extends Component {
         this.loadCards();
     };
 
+    // get card data from pokemon api
     loadCards = () => {
         this.setState({ isLoading: true })
         console.log('loading cards...');
         pokemonApi.getBasicCards()
-            .then(res => {
-                console.log('setting state...');
-                console.log(res);
+            .then(cardsData => {
+                console.log(`setting state...
+                ${cardsData}`);
                 this.setState({
-                    allCards: res, isLoading: false
+                    allCards: cardsData, isLoading: false
                 });
             })
             .catch(err => console.log(`Error pokemonApi.getBasicCards(): ${err}`));
     };
 
-    // pass into Card to check score onclick
+    // check score based on card ID
     checkScore = cardID => {
         this.loadCards();
 
@@ -54,6 +56,7 @@ class Game extends Component {
         }
     };
 
+    // smooth scroll to the top
     scrollToTop = () => {
         scroll.scrollToTop();
     };
@@ -95,4 +98,3 @@ class Game extends Component {
 }
 
 export default Game;
-

@@ -4,13 +4,13 @@ import Score from '../Score/Score.jsx';
 import ProgressBar from '../ProgressBar/ProgressBar.jsx';
 
 class Header extends Component {
-    render() {
 
+    render() {
         return (
             <>
                 <Navbar className="fixed-top" bg="dark" variant="dark">
                     <div className="container">
-                        <Navbar.Brand href="#home">PokeMatch</Navbar.Brand>
+                        <Navbar.Brand href="#home">PokéMatch</Navbar.Brand>
                         <Score score={this.props.score} />
                     </div>
                 </Navbar >
