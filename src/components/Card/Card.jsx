@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+
+// styling
 import Image from 'react-bootstrap/Image';
+import './Card.css';
 
 class Card extends Component {
 
@@ -7,6 +10,7 @@ class Card extends Component {
         return (
             <div>
                 <Image
+                    className="card"
                     src={this.props.image}
                     id={this.props.id}
                     key={this.props.id}
