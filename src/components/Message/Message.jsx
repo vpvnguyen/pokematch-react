@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
-export default function Message() {
-    return (
-        <Jumbotron >
-            <ul>
-                <li>onclick: check if match</li>
-                <li>affect score</li>
-            </ul>
-        </Jumbotron>
-    )
+
+class Message extends Component {
+
+    render() {
+        return (
+            <Jumbotron >
+                <h3 className="mt-5">{this.props.message}</h3>
+            </Jumbotron >
+        )
+    }
 }
+
+export default Message;
