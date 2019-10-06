@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+
 html, body {
   width: 100%;
 }
@@ -9,6 +11,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+    /* background-image: url('./images/cubone-pokemon-1200.jpg'); */
+    background: linear-gradient( rgba(0, 0, 0, 0.11), rgba(0, 0, 0, 0.733)), url('./images/cubone-pokemon-1200.jpg');
+
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+
+    font-family: 'Mansalva', cursive;
+
 }
 
 code {
