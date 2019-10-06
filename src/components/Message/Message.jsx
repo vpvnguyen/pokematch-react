@@ -4,7 +4,10 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 export default function Message() {
     return (
         <Jumbotron >
-            <p>message</p>
+            <ul>
+                <li>onclick: check if match</li>
+                <li>affect score</li>
+            </ul>
         </Jumbotron>
     )
 }
