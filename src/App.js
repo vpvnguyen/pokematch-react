@@ -7,14 +7,14 @@ import './App.css';
 // components
 import Header from './components/Header/Header.jsx';
 import Message from './components/Message/Message.jsx';
-import Card from './components/Card/Card.jsx';
+import Game from './components/Game/Game.jsx';
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Message />
-      <Card />
+      <Game />
     </div>
   );
 }
