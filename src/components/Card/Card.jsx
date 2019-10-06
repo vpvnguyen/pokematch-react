@@ -1,9 +1,10 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 
 export default function Card() {
     return (
-        <Container >
+        <div>
+
             <p>Cards</p>
             <ul>
                 <li>Get data from json</li>
@@ -12,6 +13,9 @@ export default function Card() {
                 <li>onclick: check if match</li>
                 <li>affect score</li>
             </ul>
-        </Container>
+
+
+            <Image src="https://images.pokemontcg.io/dp6/90_hires.png" fluid />
+        </div>
     )
 }
