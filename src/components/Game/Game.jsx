@@ -53,24 +53,35 @@ class Game extends Component {
         }
         console.log(this.state.clicked);
         console.log(this.state.clicked.length);
-
     }
 
     render() {
         return (
+
             <div>
+
                 <Header score={this.state.clicked.length} />
                 <Message message={this.state.message} />
                 <Score score={this.state.clicked.length} />
+
                 {/* render out all pokemon cards as images */}
-                {this.state.allCards.map(card => (
-                    <Card
-                        image={card.imageUrl}
-                        key={card.id}
-                        id={card.id}
-                        checkScore={this.checkScore}
-                    />
-                ))}
+                <div className="container">
+                    <div className="row">
+
+                        {this.state.allCards.map(card => (
+                            <div className="col s3 mb-5">
+                                <Card
+                                    image={card.imageUrlHiRes}
+                                    key={card.id}
+                                    id={card.id}
+                                    checkScore={this.checkScore}
+                                />
+                            </div>
+                        ))}
+
+                    </div>
+                </div>
+
             </div>
         );
     }
