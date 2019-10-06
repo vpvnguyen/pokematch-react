@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Jumbotron from 'react-bootstrap/Jumbotron';
+import './Message.css';
 
 class Message extends Component {
 
     render() {
         return (
-            <Jumbotron className="text-center">
-                <h3 className="mt-5">{this.props.message}</h3>
-            </Jumbotron >
+            <div className="container message-box text-center mt-5">
+                <h3 className="mt-5 p-5">{this.props.message}</h3>
+            </div >
         )
     }
 }

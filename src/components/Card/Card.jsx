@@ -9,12 +9,16 @@ class Card extends Component {
     render() {
         return (
             <div>
+
                 <Image
                     className="card"
                     src={this.props.image}
                     id={this.props.id}
                     key={this.props.id}
-                    onClick={() => this.props.checkScore(this.props.id)}
+                    onClick={() => {
+                        this.props.checkScore(this.props.id);
+                        this.props.scrollTop();
+                    }}
                     alt={this.props.name}
                 />
             </div>
